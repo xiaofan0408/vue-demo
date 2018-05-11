@@ -1,44 +1,35 @@
-# vueAdmin-template
+# Vue学习大纲
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+## 开发环境
 
-**Live demo:** http://panjiachen.github.io/vueAdmin-template
+- [Node.js](https://nodejs.org/zh-cn/) >= 8.9.0
+- [Visual Studio Code](https://code.visualstudio.com/) (编辑器)
 
-[中文文档](https://github.com/PanJiaChen/vueAdmin-template/blob/master/README-zh.md)
 
-## Build Setup
 
-``` bash
 
-# Clone project
-git clone https://github.com/PanJiaChen/vueAdmin-template.git
-
-# Install dependencies
-npm install
-
-# serve with hot reload at localhost:9528
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+- [Vue-CLI](https://github.com/vuejs/vue-cli)
+```bash
+npm install -g @vue/cli
+# or
+yarn global add @vue/cli
 ```
 
-## Demo
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
-
-## Extra
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vueAdmin-template/tree/permission-control)
-
-## Related Project
- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-
- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
 
 
-## License
-[MIT](https://github.com/PanJiaChen/vueAdmin-template/blob/master/LICENSE) license.
+## 课程安排
 
-Copyright (c) 2017-present PanJiaChen
+- [Vue-CLI使用简介](./Vue-CLI简介.md)
+- [Vue.js框架简介](./vue简介.md)
+- Vue.js项目架构介绍
+
+
+## Vue资源
+- Demo：<https://github.com/xiaofan0408/vue-demo>
+- 官网：<https://cn.vuejs.org/index.html>
+- 官方教程：<https://cn.vuejs.org/v2/guide/>
+- Vue-Router官方教程：<https://router.vuejs.org/zh-cn/>
+- Vuex官方教程：<https://vuex.vuejs.org/zh-cn/>
+- element-ui pc端组件库: <http://element-cn.eleme.io/#/zh-CN>
+- vux移动组件库: <http://element-cn.eleme.io/#/zh-CN>
+- mint-ui移动组件库: <https://mint-ui.github.io/#!/zh-cn>
