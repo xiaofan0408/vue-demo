@@ -21,7 +21,7 @@ yarn global add @vue/cli
 
 - [Vue-CLI使用简介](./Vue-CLI简介.md)
 - [Vue.js框架简介](./vue简介.md)
-- Vue.js项目架构介绍
+- [Vue.js项目结构介绍](./项目结构.md)
 
 
 ## Vue资源
@@ -33,3 +33,4 @@ yarn global add @vue/cli
 - element-ui pc端组件库: <http://element-cn.eleme.io/#/zh-CN>
 - vux移动组件库: <http://element-cn.eleme.io/#/zh-CN>
 - mint-ui移动组件库: <https://mint-ui.github.io/#!/zh-cn>
+- awesome-vue: <https://github.com/vuejs/awesome-vue>
