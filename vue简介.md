@@ -88,19 +88,152 @@ v-show 与v-if 类似同样是用来实现条件块的，只是没有另外的�
 ```
 
 #### v-for
+
 #### v-bind
 
 #### v-model
 
-### 过滤器
-
-### 自定义指令
 
 ### 计算属性和侦听器
 
+#### 计算属性
+简单的文本转换可以通过filters来转换，但是当涉及到复杂的逻辑的时候就要通过计算属性完成了,计算属性都是以函数的形式写在computed选项中，计算属性中的this指向Vue实例本身，只要最后有返回的值就行, 示例如下：
+```bash
+ computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  }
+```
+我们可以通过编写一个方法达到与计算属性相同的效果，不同的是计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值，而方法则是在每当触发重新渲染时，调用方法将总会再次执行函数。
+
+#### 侦听器
+Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性。示例如下：
+```bash
+ watch: {
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
+    }
+  }
+```
+
 ### 组件
 
+可以通过以下方式定义一个组件
+```bash
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+```
+#### 通过 Prop 向子组件传递数据
+Prop 是你可以在组件上注册的一些自定义特性。当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。
+```bash
+Vue.component('item', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 data 中的值一样。
+一个 prop 被注册之后，你就可以像这样把数据作为一个自定义特性传递进来：
+```bash
+<item title="My journey with Vue"></item>
+<item title="Blogging with Vue"></item>
+<item title="Why Vue is so fun"></item>
+```
+
+#### 通过事件向父级组件发送消息
+
+我们可以调用内建的 $emit 方法并传入事件的名字，来向父级组件触发一个事件：
+
+```bash
+<button v-on:click="$emit('enlarge-text', 0.1)">
+  Enlarge text
+</button>
+```
+在父组件中就可以通过向子组件绑定事件去进行交互
+
+```bash
+<item
+  v-on:enlarge-text="postFontSize += $event"
+></item>
+```
 ### 路由
+
+[Vue-Router官方教程](<https://router.vuejs.org/zh-cn/>)
+
+Vue-Router 是一个官方推荐的路由组件，vue自身并没有自带路由功能
+
+#### 安装
+```bash
+npm install vue-router
+```
+
+#### 使用
+如果在一个模块化工程中使用它，必须要通过 Vue.use() 明确地安装路由功能：
+```bash
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+```
+#### 路由配置
+一个简单的路由配置如下所示：
+```bash
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
+```
+#### 路由跳转
+
+路由跳转有以下两种方式
+
+| 声明式  | 编程式 | 
+| -  | - | 
+| `<router-link :to="...">` | `router.push(...)` | 
+
 
 ### 状态管理
 
+[Vuex官方教程](<https://vuex.vuejs.org/zh-cn/>)
+
+Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。
+
+#### 安装 与 使用
+
+```bash
+npm install vuex --save
+```
+在一个模块化的打包系统中，您必须显式地通过 Vue.use() 来注册 Vuex：
+```bash
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+```
+当使用全局 script 标签引用 Vuex 时,则
+```bash
+<script src="/path/to/vuex.js"></script>
+```
