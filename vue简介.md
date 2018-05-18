@@ -88,10 +88,58 @@ v-show 与v-if 类似同样是用来实现条件块的，只是没有另外的�
 ```
 
 #### v-for
-
+当需要显示一个数组的时候就可以使用v-for去渲染显示，使用 item in items 形式的特殊语法，items 是源数据数组并且 item 是数组元素迭代的别名。要获取数组中元素的下标可以使用 (item, index) in items 去获取，示例如下:
+```bash
+  <li v-for="item in items">
+    {{ item.message }}
+  </li>
+```
+详细信息可以看 [v-for的官方教程](https://cn.vuejs.org/v2/guide/list.html)
 #### v-bind
+通过v-bind 可以为一个标签的属性或者组件的属性绑定一个变量或者值，绑定组件的属性必须在组件的props中声明，v-bind可以缩写成：，为单向绑定，示例如下
+```bash
+<!-- 绑定一个属性 -->
+<img v-bind:src="imageSrc">
+
+<!-- 缩写 -->
+<img :src="imageSrc">
+
+<!-- 内联字符串拼接 -->
+<img :src="'/path/to/images/' + fileName">
+
+<!-- class 绑定 -->
+<div :class="{ red: isRed }"></div>
+<div :class="[classA, classB]"></div>
+<div :class="[classA, { classB: isB, classC: isC }]">
+
+<!-- style 绑定 -->
+<div :style="{ fontSize: size + 'px' }"></div>
+<div :style="[styleObjectA, styleObjectB]"></div>
+
+<!-- 绑定一个有属性的对象 -->
+<div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
+
+<!-- 通过 prop 修饰符绑定 DOM 属性 -->
+<div v-bind:text-content.prop="text"></div>
+
+<!-- prop 绑定。“prop”必须在 my-component 中声明。-->
+<my-component :prop="someThing"></my-component>
+
+<!-- 通过 $props 将父组件的 props 一起传给子组件 -->
+<child-component v-bind="$props"></child-component>
+
+<!-- XLink -->
+<svg><a :xlink:special="foo"></a></svg>
+```
 
 #### v-model
+与v-bind类似都是绑定一个变量到属性值，不同的是v-model是双向绑定同时v-model只能用在以下的控件中：
+```bash
+<input>
+<select>
+<textarea>
+components
+```
 
 
 ### 计算属性和侦听器
